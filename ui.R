@@ -327,7 +327,11 @@ shinyUI(
              fluidRow(
                column(width = 10, offset = 1,
                       sidebarPanel(width = 12,
-                                   radioButtons('format', 'Report format', c('PDF', 'HTML', 'Word'),
+                                   p('Note: please check the model parameters, validation and calibration parameters',
+                                     HTML('<br>'),
+                                     'are what you wanted before generating and downloading the report.'),
+                                   p('Feel free to adjust them and regenerate the results if needed.'),
+                                   radioButtons('format', 'Choose report format:', c('PDF', 'HTML', 'Word'),
                                                 inline = TRUE),
                                    downloadButton('downloadReport', label = 'Download Report')
                       )

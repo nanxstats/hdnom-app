@@ -857,7 +857,7 @@ shinyServer(function(input, output, session) {
       out = render('template.Rmd',
                    switch(input$format,
                           PDF = pdf_document(toc = TRUE, number_sections = TRUE, template = NULL),
-                          HTML = html_document(toc = TRUE, number_sections = TRUE, theme = 'readable'),
+                          HTML = html_document(toc = TRUE, number_sections = TRUE),
                           Word = word_document(fig_width = 8, fig_height = 8)
                    ))
       file.rename(out, file)
