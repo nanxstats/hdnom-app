@@ -12,7 +12,7 @@ shinyUI(
     tabPanel(title = 'Home',
 
              fluidRow(
-               column(width = 8, offset = 1,
+               column(width = 10, offset = 1,
                       div(class = 'jumbotron',
                           h1('HDNOM'),
                           h3('Nomograms for high-dimensional data, built with ease.'),
@@ -20,15 +20,13 @@ shinyUI(
                           actionButton('learnmore', 'Learn More', icon('search'))
                       ),
 
-                      tags$blockquote("“Hiding within those mounds of data is knowledge that could",
-                                      tags$br(),
-                                      HTML('&nbsp;'), "change the life of a patient, or change the world.”",
+                      tags$blockquote("“Hiding within those mounds of data is knowledge that could change the life of a patient, or change the world.”",
                                       tags$small('Atul Butte, Professor, Stanford School of Medicine'))
 
                )),
 
              fluidRow(
-               column(width = 8, offset = 1,
+               column(width = 10, offset = 1,
                       includeMarkdown('footer.md')
                )
              )
@@ -205,7 +203,7 @@ shinyUI(
                       )
                ),
 
-               column(width = 7,
+               column(width = 6,
                       mainPanel(width = 12,
                                 tabsetPanel(
                                   tabPanel("Plot", plotOutput("plot_nomogram", width = '600px', height = '600px')),
@@ -235,11 +233,11 @@ shinyUI(
                                    ),
                                    conditionalPanel(
                                      condition = "input.validate_method == 'cv'",
-                                     sliderInput('validate_cv_nfolds', 'Cross-validation fold number:', min = 3, max = 10, value = 5, step = 1)
+                                     sliderInput('validate_cv_nfolds', 'Cross-validation fold number:', min = 3, max = 10, value = 5, step = 1, ticks = FALSE)
                                    ),
                                    conditionalPanel(
                                      condition = "input.validate_method == 'repeated.cv'",
-                                     sliderInput('validate_rcv_nfolds', 'Repeated cross-validation fold number:', min = 3, max = 10, value = 5, step = 1),
+                                     sliderInput('validate_rcv_nfolds', 'Repeated cross-validation fold number:', min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
                                      numericInput('validate_rcv_rep_times', 'Repeat times', min = 3, value = 3, step = 1)
                                    ),
                                    selectInput('validate_tauc_type', label = 'tAUC Type',
@@ -256,7 +254,7 @@ shinyUI(
                       )
                ),
 
-               column(width = 7,
+               column(width = 6,
                       mainPanel(width = 12,
                                 tabsetPanel(
                                   tabPanel("Plot", plotOutput("plot_validate", width = '600px', height = '600px')),
@@ -289,15 +287,15 @@ shinyUI(
                                    ),
                                    conditionalPanel(
                                      condition = "input.calibrate_method == 'cv'",
-                                     sliderInput('calibrate_cv_nfolds', 'Cross-validation fold number:', min = 3, max = 10, value = 5, step = 1)
+                                     sliderInput('calibrate_cv_nfolds', 'Cross-validation fold number:', min = 3, max = 10, value = 5, step = 1, ticks = FALSE)
                                    ),
                                    conditionalPanel(
                                      condition = "input.calibrate_method == 'repeated.cv'",
-                                     sliderInput('calibrate_rcv_nfolds', 'Repeated cross-validation fold number:', min = 3, max = 10, value = 5, step = 1),
+                                     sliderInput('calibrate_rcv_nfolds', 'Repeated cross-validation fold number:', min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
                                      numericInput('calibrate_rcv_rep_times', 'Repeat times', min = 3, value = 10, step = 1)
                                    ),
                                    sliderInput('calibrate_ngroup', label = 'Number of groups to be formed:',
-                                               min = 2, value = 5, max = 10, step = 1),
+                                               min = 2, value = 5, max = 10, step = 1, ticks = FALSE),
                                    sliderInput('calibrate_xlim_lo', label = 'Lower limit of plot range:',
                                                min = 0.01, value = 0.5, max = 1, step = 0.01),
                                    sliderInput('calibrate_xlim_up', label = 'Upper limit of plot range:',
@@ -308,7 +306,7 @@ shinyUI(
                       )
                ),
 
-               column(width = 7,
+               column(width = 6,
                       mainPanel(width = 12,
                                 tabsetPanel(
                                   tabPanel("Plot", plotOutput("plot_calibrate", width = '600px', height = '600px')),
@@ -339,7 +337,7 @@ shinyUI(
              )),
     tabPanel(title = 'Help',
              fluidRow(
-               column(width = 7, offset = 1,
+               column(width = 10, offset = 1,
                       includeMarkdown('help.md')
                )
              ))
