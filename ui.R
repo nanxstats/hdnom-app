@@ -17,7 +17,7 @@ shinyUI(
                           h1('HDNOM'),
                           h3('Nomograms for high-dimensional data, built with ease.'),
                           p('Click the button to learn more about this web application.'),
-                          actionButton('learnmore', 'Learn More', icon('search'))
+                          actionButton('learnmore', 'Learn More', icon('search'), class = 'btn-primary btn-lg')
                       ),
 
                       tags$blockquote("“Hiding within those mounds of data is knowledge that could change the life of a patient, or change the world.”",
@@ -199,7 +199,7 @@ shinyUI(
                                    ),
                                    actionButton(inputId = 'calcNomogramButton',
                                                 label = 'Make Nomogram',
-                                                icon = icon('pencil'))
+                                                icon = icon('pencil'), class = 'btn-primary')
                       )
                ),
 
@@ -250,7 +250,7 @@ shinyUI(
                                    numericInput('tauc_by', 'Evaluation Time Point Step Size:', value = 90),
                                    actionButton(inputId = 'calcValidateButton',
                                                 label = 'Validate the Model',
-                                                icon = icon('cogs'))
+                                                icon = icon('cogs'), class = 'btn-primary')
                       )
                ),
 
@@ -302,7 +302,7 @@ shinyUI(
                                                min = 0.02, value = 1, max = 1, step = 0.01),
                                    actionButton(inputId = 'calcCalibrateButton',
                                                 label = 'Calibrate the Model',
-                                                icon = icon('wrench'))
+                                                icon = icon('wrench'), class = 'btn-primary')
                       )
                ),
 
@@ -331,7 +331,7 @@ shinyUI(
                                    p('Feel free to adjust them and regenerate the results if needed.'),
                                    radioButtons('format', 'Choose report format:', c('PDF', 'HTML', 'Word'),
                                                 inline = TRUE),
-                                   downloadButton('downloadReport', label = 'Download Report')
+                                   downloadButton('downloadReport', label = 'Generate & Download Report', class = 'btn-primary')
                       )
                )
              )),
