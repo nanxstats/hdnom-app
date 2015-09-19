@@ -1,9 +1,16 @@
 
 # Welcome to the hdnom web app
 
-The hdnom web application helps you build penalized Cox models for high-dimensional data with survival outcomes. All 9 types of model included in the hdnom package are supported. It can help you build nomograms, validate the model, calibrate the model, and generate reproducible PDF/HTML/Word reports, all in a browser.
+The hdnom web application helps you build penalized Cox models for high-dimensional data with survival outcomes. All 9 types of model included in the hdnom package are supported. It streamlined the process of nomogram building, model validation, model calibration, and reproducible PDF/HTML/Word report generation --- all done inside your web browser.
 
-Click `Upload` to start uploading your dataset. Once the computation and plotting is finished in one panel, simply switch to the next panel to continue.
+A common and logical usage of the web app would be: click `Upload` to upload your dataset; specify the parameters for building models in the `Nomogram` panel; then validate/calibrate the built model in the `Validation`/`Calibration` panels. Finally, you will be able to download the report containing all the results in the `Report` panel. Once the computation and plotting is finished in one panel, simply click and switch to the next panel to continue.
+
+### Feedback
+
+If you have any questions, suggestions, or ideas about the web app, please feel free to let us know:
+
+Miaozhu Li <<miaozhu.li@duke.edu>><br>
+Nan Xiao <<nanx@uchicago.edu>>
 
 ### Citation
 

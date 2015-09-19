@@ -15,7 +15,7 @@ shinyUI(
                column(width = 8, offset = 1,
                       div(class = 'jumbotron',
                           h1('HDNOM'),
-                          h3('Nomograms for high-dimensional data, on the web.'),
+                          h3('Nomograms for high-dimensional data, built with ease.'),
                           p('Click the button to learn more about this web application.'),
                           actionButton('learnmore', 'Learn More', icon('search'))
                       ),
@@ -327,7 +327,7 @@ shinyUI(
              fluidRow(
                column(width = 10, offset = 1,
                       sidebarPanel(width = 12,
-                                   p('Note: please check the model parameters, validation and calibration parameters',
+                                   p('Note: please make sure the model, validation, and calibration parameters',
                                      HTML('<br>'),
                                      'are what you wanted before generating and downloading the report.'),
                                    p('Feel free to adjust them and regenerate the results if needed.'),
