@@ -65,8 +65,13 @@ shinyServer(function(input, output, session) {
     event = loadedData$'event'
 
     x.df = as.data.frame(x)
-    dd <<- datadist(x.df)  # TODO: randomfy this variable name
-    options(datadists = 'dd')
+    #     dd <<- datadist(x.df)  # TODO: randomfy this variable name
+    #     options(datadists = 'dd')
+
+    # a hack to randomize global variable name to avoid conflict across sessions
+    rndstr = gsub('\\.', '', as.character(runif(1)))
+    eval(parse(text = paste0('dd_', rndstr, ' <<- datadist(x.df)')))
+    eval(parse(text = paste0("options(datadists = 'dd_", rndstr, "')")))
 
     if (input$model_type %in% c('flasso', 'mcp', 'mnet', 'scad', 'snet') &
         nrow(x) >= 601L) {

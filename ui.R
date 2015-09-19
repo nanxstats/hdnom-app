@@ -15,15 +15,15 @@ shinyUI(
                column(width = 8, offset = 1,
                       div(class = 'jumbotron',
                           h1('HDNOM'),
-                          h3('Nomograms for high-dimensional data, in your browser'),
-                          p('Click the button to get help on hdnom and this web application.'),
+                          h3('Nomograms for high-dimensional data, on the web.'),
+                          p('Click the button to learn more about this web application.'),
                           actionButton('learnmore', 'Learn More', icon('search'))
                       ),
 
-                      tags$blockquote("Most real life statistical problems have one or more nonstandard features.",
+                      tags$blockquote("“Hiding within those mounds of data is knowledge that could",
                                       tags$br(),
-                                      "There are no routine statistical question; only questionable statistical routines.",
-                                      tags$small('David R. Cox'))
+                                      HTML('&nbsp;'), "change the life of a patient, or change the world.”",
+                                      tags$small('Atul Butte, Professor, Stanford School of Medicine'))
 
                )),
 
