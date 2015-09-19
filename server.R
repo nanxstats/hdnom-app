@@ -764,33 +764,26 @@ shinyServer(function(input, output, session) {
 
   })
 
-
-  output$print_dataset_head = renderDataTable({
+  output$print_dataset = renderDataTable({
 
     loadedData = readData()
     x = loadedData$'x'
     time = loadedData$'time'
     event = loadedData$'event'
 
-    dataset_head = cbind('Time' = head(time), 'Event' = head(event),
-                         head(x)[, 1L:5L], '...' = '...')
-    dataset_head
+    if (!is.null(x)) {
+      x_show_maxidx = ifelse((ncol(x) >= 5L), 5L, ncol(x))
 
-  }, options = list(searching = FALSE, paging = FALSE))
+      dataset_show = cbind('Time' = time, 'Event' = event,
+                           x[, 1L:x_show_maxidx],
+                           '...' = '...')
+    } else {
+      dataset_show = NULL
+    }
 
-  output$print_dataset_tail = renderDataTable({
+    dataset_show
 
-    loadedData = readData()
-    x = loadedData$'x'
-    y = loadedData$'y'
-    time = loadedData$'time'
-    event = loadedData$'event'
-
-    dataset_tail =  cbind('Time' = tail(time), 'Event' = tail(event),
-                          tail(x)[, 1L:4L], '...' = '...')
-    dataset_tail
-
-  }, options = list(searching = FALSE, paging = FALSE))
+  }, options = list(searching = FALSE, pageLength = 10))
 
   output$summary_dataset = renderPrint({
 

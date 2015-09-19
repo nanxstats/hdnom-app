@@ -16,7 +16,7 @@ shinyUI(
                       div(class = 'jumbotron',
                           h1('HDNOM'),
                           h3('Nomograms for high-dimensional data, built with ease.'),
-                          p('Click the button to learn more about this web application.'),
+                          p('Learn how to use this web app within seconds:'),
                           actionButton('learnmore', 'Learn More', icon('search'), class = 'btn-primary btn-lg')
                       ),
 
@@ -68,10 +68,7 @@ shinyUI(
                       mainPanel(width = 12,
                                 tabsetPanel(
                                   tabPanel("Data Table",
-                                           h2('Head of data'),
-                                           dataTableOutput("print_dataset_head"),
-                                           h2('Tail of data'),
-                                           dataTableOutput("print_dataset_tail")),
+                                           dataTableOutput("print_dataset")),
                                   tabPanel("Data Summary", verbatimTextOutput("summary_dataset"))
                                 )
                       )
