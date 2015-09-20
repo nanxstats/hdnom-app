@@ -772,11 +772,14 @@ shinyServer(function(input, output, session) {
     event = loadedData$'event'
 
     if (!is.null(x)) {
-      x_show_maxidx = ifelse((ncol(x) >= 5L), 5L, ncol(x))
-
-      dataset_show = cbind('Time' = time, 'Event' = event,
-                           x[, 1L:x_show_maxidx],
-                           '...' = '...')
+      if (ncol(x) <= 4L) {
+        dataset_show = cbind('Time' = time, 'Event' = event, x)
+      } else {
+        dataset_show = cbind('Time' = time, 'Event' = event,
+                             x[, 1L:2L],
+                             '...' = '...',
+                             x[, (ncol(x) - 1L):ncol(x)])
+      }
     } else {
       dataset_show = NULL
     }
