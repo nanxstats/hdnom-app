@@ -64,6 +64,10 @@ shinyServer(function(input, output, session) {
     time = loadedData$'time'
     event = loadedData$'event'
 
+    if (is.null(x) | is.null(y) | is.null(time) | is.null(event)) {
+      stop('Please check if the datasets were uploaded correctly.')
+    }
+
     x.df = as.data.frame(x)
     #     dd <<- datadist(x.df)  # TODO: randomfy this variable name
     #     options(datadists = 'dd')
