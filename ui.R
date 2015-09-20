@@ -8,7 +8,6 @@ shinyUI(
     theme = 'lumen.css',
     inverse = FALSE,
     id = 'mainnavbar',
-    tags$head(includeScript('google-analytics.js')),  # comment out this line when debugging locally
 
     tabPanel(title = 'Home',
 
