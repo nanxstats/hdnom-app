@@ -8,6 +8,7 @@ shinyUI(
     theme = 'lumen.css',
     inverse = FALSE,
     id = 'mainnavbar',
+    tags$head(includeScript('google-analytics.js')),  # comment out this line when debugging locally
 
     tabPanel(title = 'Home',
 
@@ -20,7 +21,7 @@ shinyUI(
                           actionButton('learnmore', 'Learn More', icon('search'), class = 'btn-primary btn-lg')
                       ),
 
-                      tags$blockquote("“Hiding within those mounds of data is knowledge that could change the life of a patient, or change the world.”",
+                      tags$blockquote('“Hiding within those mounds of data is knowledge that could change the life of a patient, or change the world.”',
                                       tags$small('Atul Butte, Professor, Stanford School of Medicine'))
 
                )),
@@ -67,9 +68,9 @@ shinyUI(
                column(width = 10, offset = 1,
                       mainPanel(width = 12,
                                 tabsetPanel(
-                                  tabPanel("Data Table",
-                                           dataTableOutput("print_dataset")),
-                                  tabPanel("Data Summary", verbatimTextOutput("summary_dataset"))
+                                  tabPanel('Data Table',
+                                           dataTableOutput('print_dataset')),
+                                  tabPanel('Data Summary', verbatimTextOutput('summary_dataset'))
                                 )
                       )
                )
@@ -97,102 +98,102 @@ shinyUI(
                                                selected = 'lasso'),
                                    conditionalPanel(
                                      condition = "input.model_type == 'lasso'",
-                                     sliderInput("lasso_nfolds", "CV fold number:",
+                                     sliderInput('lasso_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
                                      radioButtons('lasso_lambda_rule', label = 'λ selection rule:',
                                                   choices = list('Minimal' = 'lambda.min',
                                                                  '1 Standard Error' = 'lambda.1se'),
                                                   selected = 'lambda.1se'),
-                                     numericInput("lasso_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("lasso_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('lasso_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('lasso_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'alasso'",
-                                     sliderInput("alasso_nfolds", "CV fold number:",
+                                     sliderInput('alasso_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
                                      radioButtons('alasso_lambda_rule', label = 'λ selection rule:',
                                                   choices = list('Minimal' = 'lambda.min',
                                                                  '1 Standard Error' = 'lambda.1se'),
                                                   selected = 'lambda.1se'),
-                                     numericInput("alasso_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("alasso_seed1", label = 'Set seed 1:', min = 1, value = 42),
-                                     numericInput("alasso_seed2", label = 'Set seed 2:', min = 1, value = 22)
+                                     numericInput('alasso_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('alasso_seed1', label = 'Set seed 1:', min = 1, value = 42),
+                                     numericInput('alasso_seed2', label = 'Set seed 2:', min = 1, value = 22)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'flasso'",
-                                     sliderInput("flasso_nfolds", "CV fold number:",
+                                     sliderInput('flasso_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput("flasso_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("flasso_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('flasso_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('flasso_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'enet'",
-                                     sliderInput("enet_alpha", "α:",
+                                     sliderInput('enet_alpha', 'α:',
                                                  min = 0, max = 1, value = 0.5, step = 0.01),
-                                     sliderInput("enet_nfolds", "CV fold number:",
+                                     sliderInput('enet_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
                                      radioButtons('enet_lambda_rule', label = 'λ selection rule:',
                                                   choices = list('Minimal' = 'lambda.min',
                                                                  '1 Standard Error' = 'lambda.1se'),
                                                   selected = 'lambda.1se'),
-                                     numericInput("enet_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("enet_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('enet_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('enet_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'aenet'",
-                                     sliderInput("aenet_alpha1", "First α:",
+                                     sliderInput('aenet_alpha1', 'First α:',
                                                  min = 0, max = 1, value = 0.5, step = 0.01),
-                                     sliderInput("aenet_alpha2", "Second α:",
+                                     sliderInput('aenet_alpha2', 'Second α:',
                                                  min = 0, max = 1, value = 0.5, step = 0.01),
-                                     sliderInput("aenet_nfolds", "CV fold number:",
+                                     sliderInput('aenet_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
                                      radioButtons('aenet_lambda_rule', label = 'λ selection rule:',
                                                   choices = list('Minimal' = 'lambda.min',
                                                                  '1 Standard Error' = 'lambda.1se'),
                                                   selected = 'lambda.1se'),
-                                     numericInput("aenet_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("aenet_seed1", label = 'Set seed 1:', min = 1, value = 42),
-                                     numericInput("aenet_seed2", label = 'Set seed 2:', min = 1, value = 22)
+                                     numericInput('aenet_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('aenet_seed1', label = 'Set seed 1:', min = 1, value = 42),
+                                     numericInput('aenet_seed2', label = 'Set seed 2:', min = 1, value = 22)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'mcp'",
-                                     numericInput("mcp_gamma", "γ:",
+                                     numericInput('mcp_gamma', 'γ:',
                                                   min = 1.01, value = 3),
-                                     sliderInput("mcp_nfolds", "CV fold number:",
+                                     sliderInput('mcp_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput("mcp_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("mcp_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('mcp_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('mcp_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'scad'",
-                                     numericInput("scad_gamma", "γ:",
+                                     numericInput('scad_gamma', 'γ:',
                                                   min = 2.01, value = 3.7),
-                                     sliderInput("scad_nfolds", "CV fold number:",
+                                     sliderInput('scad_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput("scad_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("scad_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('scad_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('scad_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'mnet'",
-                                     numericInput("mnet_gamma", "γ:",
+                                     numericInput('mnet_gamma', 'γ:',
                                                   min = 1.01, value = 3),
-                                     sliderInput("mnet_alpha", "α:",
+                                     sliderInput('mnet_alpha', 'α:',
                                                  min = 0, max = 1, value = 0.5, step = 0.01),
-                                     sliderInput("mnet_nfolds", "CV fold number:",
+                                     sliderInput('mnet_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput("mnet_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("mnet_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('mnet_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('mnet_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    conditionalPanel(
                                      condition = "input.model_type == 'snet'",
-                                     numericInput("snet_gamma", "γ:",
+                                     numericInput('snet_gamma', 'γ:',
                                                   min = 2.01, value = 3.7),
-                                     sliderInput("snet_alpha", "α:",
+                                     sliderInput('snet_alpha', 'α:',
                                                  min = 0, max = 1, value = 0.5, step = 0.01),
-                                     sliderInput("snet_nfolds", "CV fold number:",
+                                     sliderInput('snet_nfolds', 'CV fold number:',
                                                  min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput("snet_pred_at", label = 'Prediction time point:', min = 0, value = 365),
-                                     numericInput("snet_seed", label = 'Set seed:', min = 1, value = 42)
+                                     numericInput('snet_pred_at', label = 'Prediction time point:', min = 0, value = 365),
+                                     numericInput('snet_seed', label = 'Set seed:', min = 1, value = 42)
                                    ),
                                    actionButton(inputId = 'calcNomogramButton',
                                                 label = 'Make Nomogram',
@@ -203,8 +204,8 @@ shinyUI(
                column(width = 6,
                       mainPanel(width = 12,
                                 tabsetPanel(
-                                  tabPanel("Plot", plotOutput("plot_nomogram", width = '600px', height = '600px')),
-                                  tabPanel("Print", verbatimTextOutput("print_nomogram"))
+                                  tabPanel('Plot', plotOutput('plot_nomogram', width = '600px', height = '600px')),
+                                  tabPanel('Print', verbatimTextOutput('print_nomogram'))
                                 )
                       )
                )
@@ -254,11 +255,11 @@ shinyUI(
                column(width = 6,
                       mainPanel(width = 12,
                                 tabsetPanel(
-                                  tabPanel("Plot", plotOutput("plot_validate", width = '600px', height = '600px')),
-                                  tabPanel("Summary",
+                                  tabPanel('Plot', plotOutput('plot_validate', width = '600px', height = '600px')),
+                                  tabPanel('Summary',
                                            h3('Time-Dependent AUC Summary at Evaluation Time Points'),
-                                           dataTableOutput("summary_validate")),
-                                  tabPanel("Print", verbatimTextOutput("print_validate"))
+                                           dataTableOutput('summary_validate')),
+                                  tabPanel('Print', verbatimTextOutput('print_validate'))
                                 )
                       )
                )
@@ -306,11 +307,11 @@ shinyUI(
                column(width = 6,
                       mainPanel(width = 12,
                                 tabsetPanel(
-                                  tabPanel("Plot", plotOutput("plot_calibrate", width = '600px', height = '600px')),
-                                  tabPanel("Summary",
+                                  tabPanel('Plot', plotOutput('plot_calibrate', width = '600px', height = '600px')),
+                                  tabPanel('Summary',
                                            h3('Calibration Summary Table'),
-                                           dataTableOutput("summary_calibrate")),
-                                  tabPanel("Print", verbatimTextOutput("print_calibrate"))
+                                           dataTableOutput('summary_calibrate')),
+                                  tabPanel('Print', verbatimTextOutput('print_calibrate'))
                                 )
                       )
                )
