@@ -74,9 +74,9 @@ shinyServer(function(input, output, session) {
     eval(parse(text = paste0("options(datadists = 'dd_", rndstr, "')")))
 
     if (input$model_type %in% c('flasso', 'mcp', 'mnet', 'scad', 'snet') &
-        nrow(x) >= 601L) {
+        nrow(x) >= 501L) {
       return(stop("We're sorry. Considering long computation time, fused lasso, SCAD, Snet,
-                  MCP, and Mnet models now only support data with <= 600 samples.
+                  MCP, and Mnet models now only support data with <= 500 samples.
                   Please try other model types or use the hdnom package instead."))
     }
 

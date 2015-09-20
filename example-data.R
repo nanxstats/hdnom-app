@@ -3,8 +3,8 @@ y = readRDS('data/y.rds')
 time = readRDS('data/time.rds')
 event = readRDS('data/event.rds')
 
-set.seed(1010)
-idx = sample(1:nrow(x), 600)
+set.seed(97)
+idx = sample(1:nrow(x), 500)
 x = x[idx, ]
 y = y[idx, ]
 write.table(x, file = 'www/example/x.csv', quote = FALSE, sep = ',', row.names = FALSE)

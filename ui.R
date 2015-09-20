@@ -226,7 +226,7 @@ shinyUI(
                                                selected = 'bootstrap'),
                                    conditionalPanel(
                                      condition = "input.validate_method == 'bootstrap'",
-                                     numericInput('validate_boot_times', 'Bootstrap times', min = 1, value = 3, step = 1)
+                                     sliderInput('validate_boot_times', 'Bootstrap times', min = 2, max = 200, value = 10, step = 1, ticks = FALSE)
                                    ),
                                    conditionalPanel(
                                      condition = "input.validate_method == 'cv'",
@@ -235,7 +235,7 @@ shinyUI(
                                    conditionalPanel(
                                      condition = "input.validate_method == 'repeated.cv'",
                                      sliderInput('validate_rcv_nfolds', 'Repeated cross-validation fold number:', min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput('validate_rcv_rep_times', 'Repeat times', min = 3, value = 3, step = 1)
+                                     sliderInput('validate_rcv_rep_times', 'Repeat times', min = 3, max = 20, value = 10, step = 1, ticks = FALSE)
                                    ),
                                    selectInput('validate_tauc_type', label = 'tAUC Type',
                                                choices = list('Uno (2007)' = 'UNO',
@@ -280,7 +280,7 @@ shinyUI(
                                                selected = 'fitting'),
                                    conditionalPanel(
                                      condition = "input.calibrate_method == 'bootstrap'",
-                                     numericInput('calibrate_boot_times', 'Bootstrap times', min = 1, value = 4, step = 1)
+                                     sliderInput('calibrate_boot_times', 'Bootstrap times', min = 2, max = 200, value = 10, step = 1, ticks = FALSE)
                                    ),
                                    conditionalPanel(
                                      condition = "input.calibrate_method == 'cv'",
@@ -289,12 +289,12 @@ shinyUI(
                                    conditionalPanel(
                                      condition = "input.calibrate_method == 'repeated.cv'",
                                      sliderInput('calibrate_rcv_nfolds', 'Repeated cross-validation fold number:', min = 3, max = 10, value = 5, step = 1, ticks = FALSE),
-                                     numericInput('calibrate_rcv_rep_times', 'Repeat times', min = 3, value = 10, step = 1)
+                                     sliderInput('calibrate_rcv_rep_times', 'Repeat times', min = 3, max = 20, value = 10, step = 1, ticks = FALSE)
                                    ),
                                    sliderInput('calibrate_ngroup', label = 'Number of groups to be formed:',
-                                               min = 2, value = 5, max = 10, step = 1, ticks = FALSE),
+                                               min = 2, value = 5, max = 20, step = 1, ticks = FALSE),
                                    sliderInput('calibrate_xlim_lo', label = 'Lower limit of plot range:',
-                                               min = 0.01, value = 0.5, max = 1, step = 0.01),
+                                               min = 0.01, value = 0.85, max = 1, step = 0.01),
                                    sliderInput('calibrate_xlim_up', label = 'Upper limit of plot range:',
                                                min = 0.02, value = 1, max = 1, step = 0.01),
                                    actionButton(inputId = 'calcCalibrateButton',
