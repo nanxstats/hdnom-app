@@ -266,6 +266,7 @@ shinyUI(
              )
 
     ),
+
     tabPanel(title = 'Calibration',
 
              fluidRow(
@@ -318,6 +319,7 @@ shinyUI(
              )
 
     ),
+
     tabPanel(title = 'Report',
              fluidRow(
                column(width = 10, offset = 1,
@@ -332,10 +334,14 @@ shinyUI(
                       )
                )
              )),
+
     tabPanel(title = 'Help',
              fluidRow(
                column(width = 10, offset = 1,
                       includeMarkdown('help.md')
                )
-             ))
+             )),
+
+    includeScript('google-analytics.js')
+
   ))

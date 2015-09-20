@@ -21,6 +21,4 @@ Miaozhu Li and Nan Xiao (2015). hdnom: Nomograms for High-Dimensional Cox Models
 </cite>
 
 <hr>
-© 2015 [Miaozhu](http://miaozhu.li) & [Nan](http://nanx.me).
-<br>
-Made with ♥ in Durham & Chicago.
+<p class="text-muted">© <a href="http://miaozhu.li">Miaozhu</a> & <a href="http://nanx.me">Nan</a>, 2015</p>
