@@ -3,9 +3,9 @@ library('markdown')
 
 shinyUI(
   navbarPage(
-    title = 'HDNOM',
+    title = 'hdnom.io',
     id = 'mainnavbar',
-    windowTitle = 'HDNOM Web App',
+    windowTitle = 'hdnom.io: the hdnom web app',
     theme = 'lumen.css',
     inverse = FALSE,
     header = tags$head(includeScript('google-analytics.js')),
@@ -15,7 +15,7 @@ shinyUI(
              fluidRow(
                column(width = 10, offset = 1,
                       div(class = 'jumbotron',
-                          h1('HDNOM'),
+                          h1('hdnom.io'),
                           h3('Nomograms for high-dimensional data, built with ease.'),
                           p('Learn how to use this web app within seconds:'),
                           actionButton('learnmore', 'Learn More', icon('search'), class = 'btn-primary btn-lg')
