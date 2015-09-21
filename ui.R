@@ -4,10 +4,11 @@ library('markdown')
 shinyUI(
   navbarPage(
     title = 'HDNOM',
+    id = 'mainnavbar',
     windowTitle = 'HDNOM Web App',
     theme = 'lumen.css',
     inverse = FALSE,
-    id = 'mainnavbar',
+    header = tags$head(includeScript('google-analytics.js')),
 
     tabPanel(title = 'Home',
 
@@ -340,8 +341,6 @@ shinyUI(
                column(width = 10, offset = 1,
                       includeMarkdown('help.md')
                )
-             )),
-
-    includeScript('google-analytics.js')
+             ))
 
   ))
