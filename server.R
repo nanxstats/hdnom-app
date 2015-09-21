@@ -1,7 +1,5 @@
 library('shiny')
 library('survival')
-library('Hmisc')
-library('rms')
 library('hdnom')
 library('rmarkdown')
 library('knitr')
@@ -74,7 +72,7 @@ shinyServer(function(input, output, session) {
 
     # a hack to randomize global variable name to avoid conflict across sessions
     rndstr = gsub('\\.', '', as.character(runif(1)))
-    eval(parse(text = paste0('dd_', rndstr, ' <<- datadist(x.df)')))
+    eval(parse(text = paste0('dd_', rndstr, ' <<- rms::datadist(x.df)')))
     eval(parse(text = paste0("options(datadists = 'dd_", rndstr, "')")))
 
     if (input$model_type %in% c('flasso', 'mcp', 'mnet', 'scad', 'snet') &
@@ -796,7 +794,7 @@ shinyServer(function(input, output, session) {
 
     loadedData = readData()
     x = loadedData$'x'
-    describe(x)
+    Hmisc::describe(x)
 
   }, width = 80L)
 
