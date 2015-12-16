@@ -12,6 +12,10 @@ A common and logical usage of the web app:
 
 Once the computation and plotting is finished in one tab, simply click and switch to the next tab to continue.
 
+### Video Tutorial
+
+<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/D1-l0Noa3Ho" allowfullscreen></iframe></div>
+
 ### Feedback
 
 If you have any questions, suggestions, or ideas about the web app, please feel free to let us know:
@@ -29,5 +33,5 @@ Miaozhu Li and Nan Xiao (2015). hdnom: Nomograms for High-Dimensional Cox Models
 
 <hr>
 <p class="text-muted">
-© 2015 <a href="http://miaozhu.li">Miaozhu</a> & <a href="http://nanx.me">Nan</a> | <a href="http://hdnom.org">The hdnom project</a>
+© 2015 - 2016 <a href="http://miaozhu.li">Miaozhu</a> & <a href="http://nanx.me">Nan</a> | <a href="http://hdnom.org">The hdnom project</a>
 </p>

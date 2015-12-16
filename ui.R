@@ -6,7 +6,7 @@ shinyUI(
     title = 'hdnom.io',
     id = 'mainnavbar',
     windowTitle = 'hdnom.io: the hdnom web app',
-    theme = 'lumen.css',
+    theme = 'yeti.css',
     inverse = FALSE,
     header = tags$head(includeScript('google-analytics.js')),
 
@@ -17,7 +17,7 @@ shinyUI(
                       div(class = 'jumbotron',
                           h1('hdnom.io'),
                           h3('Nomograms for high-dimensional data, built with ease.'),
-                          p('Learn how to use this web app within seconds:'),
+                          br(),
                           actionButton('learnmore', 'Learn More', icon('search'), class = 'btn-primary btn-lg')
                       ),
 

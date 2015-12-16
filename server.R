@@ -75,10 +75,9 @@ shinyServer(function(input, output, session) {
     eval(parse(text = paste0('dd_', rndstr, ' <<- rms::datadist(x.df)')))
     eval(parse(text = paste0("options(datadists = 'dd_", rndstr, "')")))
 
-    if (input$model_type %in% c('flasso', 'mcp', 'mnet', 'scad', 'snet') &
-        nrow(x) >= 501L) {
-      return(stop("We're sorry. Considering long computation time, fused lasso, SCAD, Snet,
-                  MCP, and Mnet models now only support data with <= 500 samples.
+    if (input$model_type %in% c('flasso') & nrow(x) >= 501L) {
+      return(stop("Considering long computation time, the fused lasso model
+                  now only supports data with <= 500 samples.
                   Please try other model types or use the hdnom package instead."))
     }
 
@@ -130,7 +129,8 @@ shinyServer(function(input, output, session) {
                                    funlabel = 'Predicted OS Prob.')
             },
             flasso = {
-              object = hdcox.flasso(x = x, y = y, nfolds = input$flasso_nfolds,
+              object = hdcox.flasso(x = x, y = y,
+                                    nfolds = input$flasso_nfolds,
                                     seed = input$flasso_seed)
 
               nom = hdnom.nomogram(object$flasso_model, model.type = 'flasso',
@@ -138,9 +138,11 @@ shinyServer(function(input, output, session) {
                                    lambda = object$flasso_best_lambda,
                                    pred.at = input$flasso_pred_at,
                                    funlabel = 'Predicted OS Prob.')
+
             },
             mcp = {
-              object = hdcox.mcp(x = x, y = y, nfolds = input$mcp_nfolds,
+              object = hdcox.mcp(x = x, y = y,
+                                 nfolds = input$mcp_nfolds,
                                  gammas = input$mcp_gamma,
                                  seed = input$mcp_seed)
 
@@ -151,7 +153,8 @@ shinyServer(function(input, output, session) {
                                    funlabel = 'Predicted OS Prob.')
             },
             mnet = {
-              object = hdcox.mnet(x = x, y = y, nfolds = input$mnet_nfolds,
+              object = hdcox.mnet(x = x, y = y,
+                                  nfolds = input$mnet_nfolds,
                                   gammas = input$mnet_gamma,
                                   alphas = input$mnet_alpha,
                                   seed = input$mnet_seed)
@@ -163,7 +166,8 @@ shinyServer(function(input, output, session) {
                                    funlabel = 'Predicted OS Prob.')
             },
             scad = {
-              object = hdcox.scad(x = x, y = y, nfolds = input$scad_nfolds,
+              object = hdcox.scad(x = x, y = y,
+                                  nfolds = input$scad_nfolds,
                                   gammas = input$scad_gamma,
                                   seed = input$scad_seed)
 
@@ -174,7 +178,8 @@ shinyServer(function(input, output, session) {
                                    funlabel = 'Predicted OS Prob.')
             },
             snet = {
-              object = hdcox.snet(x = x, y = y, nfolds = input$snet_nfolds,
+              object = hdcox.snet(x = x, y = y,
+                                  nfolds = input$snet_nfolds,
                                   gammas = input$snet_gamma,
                                   alphas = input$snet_alpha,
                                   seed = input$snet_seed)
