@@ -3,6 +3,8 @@
 
 This web application helps you build penalized Cox models for high-dimensional data with survival outcomes. All the 9 types of model included in the _hdnom_ package are supported. It streamlined the process of nomogram building, model validation, calibration, comparison, and reproducible report generation --- all done inside your web browser.
 
+Please read the <a href="https://github.com/road2stat/hdnom-policy" target="_blank">data privacy policy</a> first before you start using this app.
+
 The following workflow is recommended:
 
  1. Click **Data** to upload your dataset;
@@ -36,5 +38,5 @@ Miaozhu Li and Nan Xiao (2015). hdnom: Nomograms for High-Dimensional Cox Models
 
 <hr>
 <p class="text-muted">
-© 2015 - 2016 <a href="http://miaozhu.li" target="_blank">Miaozhu Li</a> & <a href="http://nanx.me" target="_blank">Nan Xiao</a> | <a href="http://hdnom.org" target="_blank">The hdnom project</a>
+© 2015 - 2016 <a href="http://miaozhu.li" target="_blank">Miaozhu Li</a> & <a href="http://nanx.me" target="_blank">Nan Xiao</a> · <a href="http://hdnom.org" target="_blank">The hdnom Project</a> · <a href="https://github.com/road2stat/hdnom-policy" target="_blank">Data Privacy Policy</a>
 </p>
