@@ -46,6 +46,7 @@ shinyUI(
                                                 selected = 'example'),
                                    conditionalPanel(
                                      condition = "input.data_type == 'upload'",
+                                     p('Please read our ', a('data privacy policy', href = 'https://github.com/road2stat/hdnom-policy', target = '_blank'), 'before uploading any data.'),
                                      radioButtons('sep_type', label = 'Delimiter Type:',
                                                   choices = list('Comma' = 'comma', 'Tab' = 'tab', 'Semicolon' = 'semi'),
                                                   selected = 'comma'),
@@ -664,7 +665,7 @@ shinyUI(
 
     ),
 
-    tabPanel(title = 'Report',
+    tabPanel(title = 'Reports',
              fluidRow(
 
                column(width = 10, offset = 1,
@@ -706,8 +707,9 @@ shinyUI(
                       ),
                       sidebarPanel(width = 5,
                                    h4('R Model Object'),
-                                   p('Load the model object into R:'),
-                                   p('load("hdnom-model.Rdata")'),
+                                   p('Load the model object in R with load("hdnom-model.Rdata") for prediction. Or try',
+                                     a('hdnom appmaker', href = 'https://github.com/road2stat/hdnom-appmaker', target = '_blank'),
+                                     'to make your own nomogram app.'),
                                    br(),
                                    downloadButton('download_model_rdata', label = 'Download R Model Object', class = 'btn-primary')
                       )

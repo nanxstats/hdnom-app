@@ -17,9 +17,13 @@ The following workflow is recommended:
  8. (Optional.) Predict overall survival probability for new samples based on the built model using the **Prediction** tab;
  9. Finally, you will be able to download the PDF/HTML/Word reports containing the computation results, and the R model object in the **Report** tab.
 
-To generate the basic report, you need to at least do 1, 2, 3, and 4; to generate the external validation report, at least do 1, 2, 5, and 6; to generate the model comparison report, at least do 1 and 7. To download the R model object, at least do 1 and 2.
+Notes:
 
-Once the computation and plotting is finished in one tab, simply click and switch to the next tab to continue.
+ * To generate the basic report, you need to at least do 1, 2, 3, and 4;
+ * To generate the external validation report, at least do 1, 2, 5, and 6;
+ * To generate the model comparison report, at least do 1 and 7;
+ * To download the R model object, at least do 1 and 2.
+ * After downloaded the model object, it might be interesting to try <a href="https://github.com/road2stat/hdnom-appmaker" target="_blank">hdnom appmaker</a> to make your own nomogram-based online prediction app.
 
 ### Feedback
 
@@ -32,9 +36,9 @@ Nan Xiao <<nanx@uchicago.edu>>
 
 To cite the _hdnom_ package or the web application in publications, use:
 
-<cite>
-Miaozhu Li and Nan Xiao (2015). hdnom: Nomograms for High-Dimensional Cox Models. R package version 3.0. http://cran.r-project.org/package=hdnom
-</cite>
+<p><em>
+Miaozhu Li and Nan Xiao (2015). hdnom: Nomograms for High-Dimensional Cox Models. R package version 3.0. <a href="https://cran.r-project.org/package=hdnom" target="_blank">https://cran.r-project.org/package=hdnom</a>
+</em></p>
 
 <hr>
 <p class="text-muted">
