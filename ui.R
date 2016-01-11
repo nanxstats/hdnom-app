@@ -46,7 +46,8 @@ shinyUI(
                                                 selected = 'example'),
                                    conditionalPanel(
                                      condition = "input.data_type == 'upload'",
-                                     p('Please read our ', a('data privacy policy', href = 'https://github.com/road2stat/hdnom-policy', target = '_blank'), 'before uploading any data.'),
+                                     p('Please read our ', a('data privacy policy', href = 'https://github.com/road2stat/hdnom-doc/blob/master/privacy.md', target = '_blank'), 'before uploading any data.'),
+                                     p('Read a detailed explanation about the ', a('upload data format', href = 'https://github.com/road2stat/hdnom-doc/blob/master/upload.md', target = '_blank'), '. An example dataset is provided below.'),
                                      radioButtons('sep_type', label = 'Delimiter Type:',
                                                   choices = list('Comma' = 'comma', 'Tab' = 'tab', 'Semicolon' = 'semi'),
                                                   selected = 'comma'),
@@ -87,7 +88,7 @@ shinyUI(
 
                column(width = 4, offset = 1,
                       sidebarPanel(width = 12,
-                                   selectInput('model_type', label = 'Choose model type:',
+                                   selectInput('model_type', label = 'Select model type:',
                                                choices = list('Lasso' = 'lasso',
                                                               'Adaptive Lasso' = 'alasso',
                                                               'Fused Lasso' = 'flasso',
@@ -225,7 +226,7 @@ shinyUI(
 
                           column(width = 4, offset = 1,
                                  sidebarPanel(width = 12,
-                                              selectInput('validate_method', label = 'Choose validation method:',
+                                              selectInput('validate_method', label = 'Select validation method:',
                                                           choices = list('Bootstrap' = 'bootstrap',
                                                                          'Cross-Validation' = 'cv',
                                                                          'Repeated Cross-Validation' = 'repeated.cv'),
@@ -280,7 +281,7 @@ shinyUI(
 
                           column(width = 4, offset = 1,
                                  sidebarPanel(width = 12,
-                                              selectInput('calibrate_method', label = 'Choose calibration method:',
+                                              selectInput('calibrate_method', label = 'Select calibration method:',
                                                           choices = list('Fitting' = 'fitting',
                                                                          'Bootstrap' = 'bootstrap',
                                                                          'Cross-Validation' = 'cv',
@@ -300,7 +301,7 @@ shinyUI(
                                                 sliderInput('calibrate_rcv_rep_times', 'Repeat times:', min = 3, max = 20, value = 10, step = 1, ticks = FALSE)
                                               ),
                                               sliderInput('calibrate_ngroup', label = 'Number of groups to be formed:',
-                                                          min = 2, value = 3, max = 10, step = 1, ticks = FALSE),
+                                                          min = 2, value = 3, max = 9, step = 1, ticks = FALSE),
                                               numericInput('calibrate_pred_at', label = 'Prediction time point:', min = 0, value = 365),
                                               numericInput('calibrate_seed', label = 'Set seed:', min = 1, value = 42),
                                               sliderInput('calibrate_xlim_lo', label = 'Lower limit of plot range:',
@@ -430,7 +431,7 @@ shinyUI(
                                                 br(),
                                                 a('Sample data y (Semicolon-separated)', href = 'example/y_new.txt', target = '_blank')),
                                               sliderInput('external_calibrate_ngroup', label = 'Number of groups to be formed:',
-                                                          min = 2, value = 3, max = 10, step = 1, ticks = FALSE),
+                                                          min = 2, value = 3, max = 9, step = 1, ticks = FALSE),
                                               numericInput('external_calibrate_pred_at', label = 'Prediction time point:', min = 0, value = 365),
                                               sliderInput('external_calibrate_xlim_lo', label = 'Lower limit of plot range:',
                                                           min = 0.01, value = 0.85, max = 1, step = 0.01),
@@ -509,7 +510,7 @@ shinyUI(
                                                                                 'SCAD' = 'scad',
                                                                                 'Snet' = 'snet')),
 
-                                              selectInput('compare_validate_method', label = 'Choose validation method:',
+                                              selectInput('compare_validate_method', label = 'Select validation method:',
                                                           choices = list('Bootstrap' = 'bootstrap',
                                                                          'Cross-Validation' = 'cv',
                                                                          'Repeated Cross-Validation' = 'repeated.cv'),
@@ -577,7 +578,7 @@ shinyUI(
                                                                                 'SCAD' = 'scad',
                                                                                 'Snet' = 'snet')),
 
-                                              selectInput('compare_calibrate_method', label = 'Choose calibration method:',
+                                              selectInput('compare_calibrate_method', label = 'Select calibration method:',
                                                           choices = list('Fitting' = 'fitting',
                                                                          'Bootstrap' = 'bootstrap',
                                                                          'Cross-Validation' = 'cv',
@@ -597,7 +598,7 @@ shinyUI(
                                                 sliderInput('compare_calibrate_rcv_rep_times', 'Repeat times:', min = 3, max = 20, value = 10, step = 1, ticks = FALSE)
                                               ),
                                               sliderInput('compare_calibrate_ngroup', label = 'Number of groups to be formed:',
-                                                          min = 2, value = 3, max = 10, step = 1, ticks = FALSE),
+                                                          min = 2, value = 3, max = 9, step = 1, ticks = FALSE),
                                               numericInput('compare_calibrate_pred_at', label = 'Prediction time point:', min = 0, value = 365),
                                               numericInput('compare_calibrate_seed', label = 'Set seed:', min = 1, value = 42),
                                               sliderInput('compare_calibrate_xlim_lo', label = 'Lower limit of plot range:',
@@ -671,9 +672,9 @@ shinyUI(
                column(width = 10, offset = 1,
                       sidebarPanel(width = 12,
                                    h4('Report & Model Download'),
-                                   p('You can choose to download three types of report according to what
-                                     analysis you performed in the app. The R model object is also available.'),
-                                   p('Note: please make sure the parameter settings
+                                   p('Please choose one or more from the three types of report according to the
+                                     analysis you have done. The R model object is also available.'),
+                                   p('Note: please make sure the parameter settings in the previous steps
                                      are what you wanted before generating the report.
                                      Feel free to adjust them and regenerate the results if needed.')
                                    )),
@@ -681,14 +682,14 @@ shinyUI(
                column(width = 10, offset = 1,
                       sidebarPanel(width = 5,
                                    h4('Basic Report'),
-                                   p('Nomogram, internal validation and calibration results.'),
+                                   p('Nomogram, internal validation, and calibration results'),
                                    radioButtons('format_basic', 'Choose report format:', c('PDF', 'HTML', 'Word'),
                                                 inline = TRUE),
                                    downloadButton('download_report_basic', label = 'Generate & Download Report', class = 'btn-primary')
                       ),
                       sidebarPanel(width = 5,
                                    h4('External Validation Report'),
-                                   p('External validation and calibration results.'),
+                                   p('External validation and calibration results'),
                                    radioButtons('format_external', 'Choose report format:', c('PDF', 'HTML', 'Word'),
                                                 inline = TRUE),
                                    downloadButton('download_report_external', label = 'Generate & Download Report', class = 'btn-primary')
@@ -700,7 +701,7 @@ shinyUI(
                column(width = 10, offset = 1,
                       sidebarPanel(width = 5,
                                    h4('Model Comparison Report'),
-                                   p('Model comparison results.'),
+                                   p('Model comparison results'),
                                    radioButtons('format_compare', 'Choose report format:', c('PDF', 'HTML', 'Word'),
                                                 inline = TRUE),
                                    downloadButton('download_report_compare', label = 'Generate & Download Report', class = 'btn-primary')
