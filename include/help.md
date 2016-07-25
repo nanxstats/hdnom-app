@@ -34,8 +34,8 @@ please <a href="https://github.com/road2stat/hdnom-doc/blob/master/citation.md" 
 
 If you have any questions, suggestions, or ideas about the web application, please feel free to let us know:
 
-Miaozhu Li <<http://miaozhu.li>><br>
-Nan Xiao <<http://nanx.me>>
+ * Miaozhu Li <<http://miaozhu.li>>
+ * Nan Xiao <<http://nanx.me>>
 
 <hr>
 <p class="text">
