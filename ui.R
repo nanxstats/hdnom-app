@@ -5,7 +5,8 @@ shinyUI(
   navbarPage(
     title = 'hdnom.io',
     id = 'mainnavbar',
-    theme   = 'spacelab.css',
+    theme   = 'hdnom.css',
+    inverse = FALSE,
     windowTitle = 'hdnom.io - Nomograms for High-Dimensional Data',
     header = tags$head(includeScript('google-analytics.js')),
 
