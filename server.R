@@ -13,7 +13,8 @@ shinyServer(function(input, output, session) {
 
   readData <- reactive({
     if (input$data_type == "upload" & (!is.null(input$filex) & !is.null(input$filey))) {
-      switch(input$sep_type,
+      switch(
+        input$sep_type,
         comma = {
           x <- read.table(file = input$filex$datapath, header = TRUE, sep = ",", as.is = TRUE)
           y <- read.table(file = input$filey$datapath, header = TRUE, sep = ",", as.is = TRUE)
@@ -49,7 +50,8 @@ shinyServer(function(input, output, session) {
 
   readDataExtVal <- reactive({
     if (!is.null(input$ext_val_filex) & !is.null(input$ext_val_filey)) {
-      switch(input$ext_val_sep_type,
+      switch(
+        input$ext_val_sep_type,
         comma = {
           x_new <- read.table(file = input$ext_val_filex$datapath, header = TRUE, sep = ",", as.is = TRUE)
           y_new <- read.table(file = input$ext_val_filey$datapath, header = TRUE, sep = ",", as.is = TRUE)
@@ -80,7 +82,8 @@ shinyServer(function(input, output, session) {
 
   readDataExtCal <- reactive({
     if (!is.null(input$ext_cal_filex) & !is.null(input$ext_cal_filey)) {
-      switch(input$ext_cal_sep_type,
+      switch(
+        input$ext_cal_sep_type,
         comma = {
           x_new <- read.table(file = input$ext_cal_filex$datapath, header = TRUE, sep = ",", as.is = TRUE)
           y_new <- read.table(file = input$ext_cal_filey$datapath, header = TRUE, sep = ",", as.is = TRUE)
@@ -135,7 +138,8 @@ shinyServer(function(input, output, session) {
                   Please try other model types or use the hdnom package instead."))
     }
 
-    switch(input$model_type,
+    switch(
+      input$model_type,
       lasso = {
         object <- hdcox.lasso(
           x = x, y = y, nfolds = input$lasso_nfolds,
@@ -144,10 +148,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$lasso_model,
-          model.type = "lasso",
-          x, time, event, ddist = x.df,
-          pred.at = input$lasso_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "lasso",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$lasso_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       alasso = {
@@ -158,10 +162,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$alasso_model,
-          model.type = "alasso",
-          x, time, event, ddist = x.df,
-          pred.at = input$alasso_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "alasso",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$alasso_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       enet = {
@@ -173,10 +177,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$enet_model,
-          model.type = "enet",
-          x, time, event, ddist = x.df,
-          pred.at = input$enet_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "enet",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$enet_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       aenet = {
@@ -188,10 +192,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$aenet_model,
-          model.type = "aenet",
-          x, time, event, ddist = x.df,
-          pred.at = input$aenet_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "aenet",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$aenet_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       flasso = {
@@ -202,10 +206,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$flasso_model,
-          model.type = "flasso",
-          x, time, event, ddist = x.df,
-          pred.at = input$flasso_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "flasso",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$flasso_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       mcp = {
@@ -217,10 +221,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$mcp_model,
-          model.type = "mcp",
-          x, time, event, ddist = x.df,
-          pred.at = input$mcp_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "mcp",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$mcp_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       mnet = {
@@ -233,10 +237,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$mnet_model,
-          model.type = "mnet",
-          x, time, event, ddist = x.df,
-          pred.at = input$mnet_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "mnet",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$mnet_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       scad = {
@@ -248,10 +252,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$scad_model,
-          model.type = "scad",
-          x, time, event, ddist = x.df,
-          pred.at = input$scad_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "scad",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$scad_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       },
       snet = {
@@ -264,10 +268,10 @@ shinyServer(function(input, output, session) {
         )
 
         nom <- hdnom.nomogram(object$snet_model,
-          model.type = "snet",
-          x, time, event, ddist = x.df,
-          pred.at = input$snet_pred_at,
-          funlabel = "Predicted OS Prob."
+                              model.type = "snet",
+                              x, time, event, ddist = x.df,
+                              pred.at = input$snet_pred_at,
+                              funlabel = "Predicted OS Prob."
         )
       }
     )
@@ -284,217 +288,219 @@ shinyServer(function(input, output, session) {
     calcedNomogram <- calcNomogram()
     modelObject <- calcedNomogram$"object"
 
-    switch(input$validate_method,
+    switch(
+      input$validate_method,
       bootstrap = {
         valObj <- switch(input$model_type,
-          lasso = {
-            hdnom.validate(x, time, event,
-              model.type = "lasso",
-              alpha = 1, lambda = modelObject$"lasso_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          alasso = {
-            hdnom.validate(x, time, event,
-              model.type = "alasso",
-              alpha = 1, lambda = modelObject$"alasso_best_lambda",
-              pen.factor = modelObject$"pen_factor",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          enet = {
-            hdnom.validate(x, time, event,
-              model.type = "enet",
-              alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          aenet = {
-            hdnom.validate(x, time, event,
-              model.type = "aenet",
-              alpha = modelObject$"aenet_best_alpha",
-              lambda = modelObject$"aenet_best_lambda",
-              pen.factor = modelObject$"pen_factor",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          flasso = {
-            hdnom.validate(x, time, event,
-              model.type = "flasso",
-              lambda = modelObject$"flasso_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          mcp = {
-            hdnom.validate(x, time, event,
-              model.type = "mcp", alpha = 1,
-              gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          mnet = {
-            hdnom.validate(x, time, event,
-              model.type = "mnet", alpha = input$mnet_alpha,
-              gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          scad = {
-            hdnom.validate(x, time, event,
-              model.type = "scad", alpha = 1,
-              gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          },
-          snet = {
-            hdnom.validate(x, time, event,
-              model.type = "snet", alpha = input$snet_alpha,
-              gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-              method = "bootstrap", boot.times = input$validate_boot_times,
-              tauc.type = input$validate_tauc_type,
-              tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-              seed = input$validate_seed,
-              trace = FALSE
-            )
-          }
+                         lasso = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "lasso",
+                                          alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         alasso = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "alasso",
+                                          alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                                          pen.factor = modelObject$"pen_factor",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         enet = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "enet",
+                                          alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         aenet = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "aenet",
+                                          alpha = modelObject$"aenet_best_alpha",
+                                          lambda = modelObject$"aenet_best_lambda",
+                                          pen.factor = modelObject$"pen_factor",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         flasso = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "flasso",
+                                          lambda = modelObject$"flasso_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         mcp = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "mcp", alpha = 1,
+                                          gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         mnet = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "mnet", alpha = input$mnet_alpha,
+                                          gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         scad = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "scad", alpha = 1,
+                                          gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         },
+                         snet = {
+                           hdnom.validate(x, time, event,
+                                          model.type = "snet", alpha = input$snet_alpha,
+                                          gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                                          method = "bootstrap", boot.times = input$validate_boot_times,
+                                          tauc.type = input$validate_tauc_type,
+                                          tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                                          seed = input$validate_seed,
+                                          trace = FALSE
+                           )
+                         }
         )
       },
 
       cv = {
         valObj <-
-          switch(input$model_type,
+          switch(
+            input$model_type,
             lasso = {
               hdnom.validate(x, time, event,
-                model.type = "lasso",
-                alpha = 1, lambda = modelObject$"lasso_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "lasso",
+                             alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             alasso = {
               hdnom.validate(x, time, event,
-                model.type = "alasso",
-                alpha = 1, lambda = modelObject$"alasso_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "alasso",
+                             alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                             pen.factor = modelObject$"pen_factor",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             enet = {
               hdnom.validate(x, time, event,
-                model.type = "enet",
-                alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "enet",
+                             alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             aenet = {
               hdnom.validate(x, time, event,
-                model.type = "aenet",
-                alpha = modelObject$"aenet_best_alpha",
-                lambda = modelObject$"aenet_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "aenet",
+                             alpha = modelObject$"aenet_best_alpha",
+                             lambda = modelObject$"aenet_best_lambda",
+                             pen.factor = modelObject$"pen_factor",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             flasso = {
               hdnom.validate(x, time, event,
-                model.type = "flasso",
-                lambda = modelObject$"flasso_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "flasso",
+                             lambda = modelObject$"flasso_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             mcp = {
               hdnom.validate(x, time, event,
-                model.type = "mcp", alpha = 1,
-                gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "mcp", alpha = 1,
+                             gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             mnet = {
               hdnom.validate(x, time, event,
-                model.type = "mnet", alpha = input$mnet_alpha,
-                gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "mnet", alpha = input$mnet_alpha,
+                             gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             scad = {
               hdnom.validate(x, time, event,
-                model.type = "scad", alpha = 1,
-                gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "scad", alpha = 1,
+                             gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             snet = {
               hdnom.validate(x, time, event,
-                model.type = "snet", alpha = input$snet_alpha,
-                gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-                method = "cv", nfolds = input$validate_cv_nfolds,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "snet", alpha = input$snet_alpha,
+                             gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                             method = "cv", nfolds = input$validate_cv_nfolds,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             }
           )
@@ -502,107 +508,108 @@ shinyServer(function(input, output, session) {
 
       repeated.cv = {
         valObj <-
-          switch(input$model_type,
+          switch(
+            input$model_type,
             lasso = {
               hdnom.validate(x, time, event,
-                model.type = "lasso",
-                alpha = 1, lambda = modelObject$"lasso_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "lasso",
+                             alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             alasso = {
               hdnom.validate(x, time, event,
-                model.type = "alasso",
-                alpha = 1, lambda = modelObject$"alasso_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "alasso",
+                             alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                             pen.factor = modelObject$"pen_factor",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             enet = {
               hdnom.validate(x, time, event,
-                model.type = "enet",
-                alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "enet",
+                             alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             aenet = {
               hdnom.validate(x, time, event,
-                model.type = "aenet",
-                alpha = modelObject$"aenet_best_alpha",
-                lambda = modelObject$"aenet_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "aenet",
+                             alpha = modelObject$"aenet_best_alpha",
+                             lambda = modelObject$"aenet_best_lambda",
+                             pen.factor = modelObject$"pen_factor",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             flasso = {
               hdnom.validate(x, time, event,
-                model.type = "flasso",
-                lambda = modelObject$"flasso_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "flasso",
+                             lambda = modelObject$"flasso_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             mcp = {
               hdnom.validate(x, time, event,
-                model.type = "mcp", alpha = 1,
-                gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "mcp", alpha = 1,
+                             gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             mnet = {
               hdnom.validate(x, time, event,
-                model.type = "mnet", alpha = input$mnet_alpha,
-                gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "mnet", alpha = input$mnet_alpha,
+                             gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             scad = {
               hdnom.validate(x, time, event,
-                model.type = "scad", alpha = 1,
-                gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "scad", alpha = 1,
+                             gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             },
             snet = {
               hdnom.validate(x, time, event,
-                model.type = "snet", alpha = input$snet_alpha,
-                gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-                method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
-                tauc.type = input$validate_tauc_type,
-                tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
-                seed = input$validate_seed,
-                trace = FALSE
+                             model.type = "snet", alpha = input$snet_alpha,
+                             gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                             method = "repeated.cv", nfolds = input$validate_rcv_nfolds, rep.times = input$validate_rcv_rep_times,
+                             tauc.type = input$validate_tauc_type,
+                             tauc.time = seq(input$tauc_from, input$tauc_to, input$tauc_by),
+                             seed = input$validate_seed,
+                             trace = FALSE
               )
             }
           )
@@ -621,201 +628,203 @@ shinyServer(function(input, output, session) {
     calcedNomogram <- calcNomogram()
     modelObject <- calcedNomogram$"object"
 
-    switch(input$calibrate_method,
+    switch(
+      input$calibrate_method,
 
       fitting = {
         calObj <-
           switch(input$model_type,
-            lasso = {
-              hdnom.calibrate(x, time, event,
-                model.type = "lasso",
-                alpha = 1, lambda = modelObject$"lasso_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            alasso = {
-              hdnom.calibrate(x, time, event,
-                model.type = "alasso",
-                alpha = 1, lambda = modelObject$"alasso_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            enet = {
-              hdnom.calibrate(x, time, event,
-                model.type = "enet",
-                alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            aenet = {
-              hdnom.calibrate(x, time, event,
-                model.type = "aenet",
-                alpha = modelObject$"aenet_best_alpha",
-                lambda = modelObject$"aenet_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            flasso = {
-              hdnom.calibrate(x, time, event,
-                model.type = "flasso",
-                lambda = modelObject$"flasso_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            mcp = {
-              hdnom.calibrate(x, time, event,
-                model.type = "mcp", alpha = 1,
-                gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            mnet = {
-              hdnom.calibrate(x, time, event,
-                model.type = "mnet", alpha = input$mnet_alpha,
-                gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            scad = {
-              hdnom.calibrate(x, time, event,
-                model.type = "scad", alpha = 1,
-                gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            },
-            snet = {
-              hdnom.calibrate(x, time, event,
-                model.type = "snet", alpha = input$snet_alpha,
-                gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-                method = "fitting",
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
-              )
-            }
+                 lasso = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "lasso",
+                                   alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 alasso = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "alasso",
+                                   alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                                   pen.factor = modelObject$"pen_factor",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 enet = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "enet",
+                                   alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 aenet = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "aenet",
+                                   alpha = modelObject$"aenet_best_alpha",
+                                   lambda = modelObject$"aenet_best_lambda",
+                                   pen.factor = modelObject$"pen_factor",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 flasso = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "flasso",
+                                   lambda = modelObject$"flasso_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 mcp = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "mcp", alpha = 1,
+                                   gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 mnet = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "mnet", alpha = input$mnet_alpha,
+                                   gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 scad = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "scad", alpha = 1,
+                                   gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 },
+                 snet = {
+                   hdnom.calibrate(x, time, event,
+                                   model.type = "snet", alpha = input$snet_alpha,
+                                   gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                                   method = "fitting",
+                                   pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                                   seed = input$calibrate_seed,
+                                   trace = FALSE
+                   )
+                 }
           )
       },
 
       bootstrap = {
         calObj <-
-          switch(input$model_type,
+          switch(
+            input$model_type,
             lasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "lasso",
-                alpha = 1, lambda = modelObject$"lasso_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "lasso",
+                              alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             alasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "alasso",
-                alpha = 1, lambda = modelObject$"alasso_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "alasso",
+                              alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                              pen.factor = modelObject$"pen_factor",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             enet = {
               hdnom.calibrate(x, time, event,
-                model.type = "enet",
-                alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "enet",
+                              alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             aenet = {
               hdnom.calibrate(x, time, event,
-                model.type = "aenet",
-                alpha = modelObject$"aenet_best_alpha",
-                lambda = modelObject$"aenet_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "aenet",
+                              alpha = modelObject$"aenet_best_alpha",
+                              lambda = modelObject$"aenet_best_lambda",
+                              pen.factor = modelObject$"pen_factor",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             flasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "flasso",
-                lambda = modelObject$"flasso_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "flasso",
+                              lambda = modelObject$"flasso_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             mcp = {
               hdnom.calibrate(x, time, event,
-                model.type = "mcp", alpha = 1,
-                gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "mcp", alpha = 1,
+                              gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             mnet = {
               hdnom.calibrate(x, time, event,
-                model.type = "mnet", alpha = input$mnet_alpha,
-                gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "mnet", alpha = input$mnet_alpha,
+                              gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             scad = {
               hdnom.calibrate(x, time, event,
-                model.type = "scad", alpha = 1,
-                gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "scad", alpha = 1,
+                              gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             snet = {
               hdnom.calibrate(x, time, event,
-                model.type = "snet", alpha = input$snet_alpha,
-                gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-                method = "bootstrap", boot.times = input$calibrate_boot_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "snet", alpha = input$snet_alpha,
+                              gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                              method = "bootstrap", boot.times = input$calibrate_boot_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             }
           )
@@ -823,98 +832,99 @@ shinyServer(function(input, output, session) {
 
       cv = {
         calObj <-
-          switch(input$model_type,
+          switch(
+            input$model_type,
             lasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "lasso",
-                alpha = 1, lambda = modelObject$"lasso_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "lasso",
+                              alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             alasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "alasso",
-                alpha = 1, lambda = modelObject$"alasso_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "alasso",
+                              alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                              pen.factor = modelObject$"pen_factor",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             enet = {
               hdnom.calibrate(x, time, event,
-                model.type = "enet",
-                alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "enet",
+                              alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             aenet = {
               hdnom.calibrate(x, time, event,
-                model.type = "aenet",
-                alpha = modelObject$"aenet_best_alpha",
-                lambda = modelObject$"aenet_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "aenet",
+                              alpha = modelObject$"aenet_best_alpha",
+                              lambda = modelObject$"aenet_best_lambda",
+                              pen.factor = modelObject$"pen_factor",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             flasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "flasso",
-                lambda = modelObject$"flasso_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "flasso",
+                              lambda = modelObject$"flasso_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             mcp = {
               hdnom.calibrate(x, time, event,
-                model.type = "mcp", alpha = 1,
-                gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "mcp", alpha = 1,
+                              gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             mnet = {
               hdnom.calibrate(x, time, event,
-                model.type = "mnet", alpha = input$mnet_alpha,
-                gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "mnet", alpha = input$mnet_alpha,
+                              gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             scad = {
               hdnom.calibrate(x, time, event,
-                model.type = "scad", alpha = 1,
-                gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "scad", alpha = 1,
+                              gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             snet = {
               hdnom.calibrate(x, time, event,
-                model.type = "snet", alpha = input$snet_alpha,
-                gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-                method = "cv", nfolds = input$calibrate_cv_nfolds,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "snet", alpha = input$snet_alpha,
+                              gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                              method = "cv", nfolds = input$calibrate_cv_nfolds,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             }
           )
@@ -922,98 +932,99 @@ shinyServer(function(input, output, session) {
 
       repeated.cv = {
         calObj <-
-          switch(input$model_type,
+          switch(
+            input$model_type,
             lasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "lasso",
-                alpha = 1, lambda = modelObject$"lasso_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "lasso",
+                              alpha = 1, lambda = modelObject$"lasso_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             alasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "alasso",
-                alpha = 1, lambda = modelObject$"alasso_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "alasso",
+                              alpha = 1, lambda = modelObject$"alasso_best_lambda",
+                              pen.factor = modelObject$"pen_factor",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             enet = {
               hdnom.calibrate(x, time, event,
-                model.type = "enet",
-                alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "enet",
+                              alpha = input$enet_alpha, lambda = modelObject$"enet_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             aenet = {
               hdnom.calibrate(x, time, event,
-                model.type = "aenet",
-                alpha = modelObject$"aenet_best_alpha",
-                lambda = modelObject$"aenet_best_lambda",
-                pen.factor = modelObject$"pen_factor",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "aenet",
+                              alpha = modelObject$"aenet_best_alpha",
+                              lambda = modelObject$"aenet_best_lambda",
+                              pen.factor = modelObject$"pen_factor",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             flasso = {
               hdnom.calibrate(x, time, event,
-                model.type = "flasso",
-                lambda = modelObject$"flasso_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "flasso",
+                              lambda = modelObject$"flasso_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             mcp = {
               hdnom.calibrate(x, time, event,
-                model.type = "mcp", alpha = 1,
-                gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "mcp", alpha = 1,
+                              gamma = input$mcp_gamma, lambda = modelObject$"mcp_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             mnet = {
               hdnom.calibrate(x, time, event,
-                model.type = "mnet", alpha = input$mnet_alpha,
-                gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "mnet", alpha = input$mnet_alpha,
+                              gamma = input$mnet_gamma, lambda = modelObject$"mnet_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             scad = {
               hdnom.calibrate(x, time, event,
-                model.type = "scad", alpha = 1,
-                gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "scad", alpha = 1,
+                              gamma = input$scad_gamma, lambda = modelObject$"scad_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             },
             snet = {
               hdnom.calibrate(x, time, event,
-                model.type = "snet", alpha = input$snet_alpha,
-                gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
-                method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
-                pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
-                seed = input$calibrate_seed,
-                trace = FALSE
+                              model.type = "snet", alpha = input$snet_alpha,
+                              gamma = input$snet_gamma, lambda = modelObject$"snet_best_lambda",
+                              method = "repeated.cv", nfolds = input$calibrate_rcv_nfolds, rep.times = input$calibrate_rcv_rep_times,
+                              pred.at = input$calibrate_pred_at, ngroup = input$calibrate_ngroup,
+                              seed = input$calibrate_seed,
+                              trace = FALSE
               )
             }
           )
@@ -1125,7 +1136,8 @@ shinyServer(function(input, output, session) {
     time <- loadedData$"time"
     event <- loadedData$"event"
 
-    switch(input$compare_validate_method,
+    switch(
+      input$compare_validate_method,
       bootstrap = {
         cmpValObj <-
           hdnom.compare.validate(
@@ -1175,7 +1187,8 @@ shinyServer(function(input, output, session) {
     time <- loadedData$"time"
     event <- loadedData$"event"
 
-    switch(input$compare_calibrate_method,
+    switch(
+      input$compare_calibrate_method,
       fitting = {
         cmpCalObj <-
           hdnom.compare.calibrate(
@@ -1296,8 +1309,8 @@ shinyServer(function(input, output, session) {
   output$plot_calibrate <- renderPlot({
     calcedCalibrate <- calcCalibrate()
     plot(calcedCalibrate,
-      xlim = c(input$calibrate_xlim_lo, input$calibrate_xlim_up),
-      ylim = c(input$calibrate_xlim_lo, input$calibrate_xlim_up)
+         xlim = c(input$calibrate_xlim_lo, input$calibrate_xlim_up),
+         ylim = c(input$calibrate_xlim_lo, input$calibrate_xlim_up)
     )
   })
 
@@ -1343,8 +1356,8 @@ shinyServer(function(input, output, session) {
   output$plot_external_calibrate <- renderPlot({
     calcedExternalCalibrate <- calcExternalCalibrate()
     plot(calcedExternalCalibrate,
-      xlim = c(input$external_calibrate_xlim_lo, input$external_calibrate_xlim_up),
-      ylim = c(input$external_calibrate_xlim_lo, input$external_calibrate_xlim_up)
+         xlim = c(input$external_calibrate_xlim_lo, input$external_calibrate_xlim_up),
+         ylim = c(input$external_calibrate_xlim_lo, input$external_calibrate_xlim_up)
     )
   })
 
@@ -1389,8 +1402,8 @@ shinyServer(function(input, output, session) {
   output$plot_compare_calibrate <- renderPlot({
     calcedCompareCalibrate <- calcCompareCalibrate()
     plot(calcedCompareCalibrate,
-      xlim = c(input$compare_calibrate_xlim_lo, input$compare_calibrate_xlim_up),
-      ylim = c(input$compare_calibrate_xlim_lo, input$compare_calibrate_xlim_up)
+         xlim = c(input$compare_calibrate_xlim_lo, input$compare_calibrate_xlim_up),
+         ylim = c(input$compare_calibrate_xlim_lo, input$compare_calibrate_xlim_up)
     )
   })
 
@@ -1430,38 +1443,38 @@ shinyServer(function(input, output, session) {
             )
           )
           ui_list[[i]] <- selectInput(paste0("pred_var_", varinfo[["name"]][i]),
-            label = paste0(
-              varinfo[["name"]][i], " (",
-              as.character(varinfo[["domain"]][[i]][1L]),
-              ", ", as.character(varinfo[["domain"]][[i]][2L]), ")"
-            ),
-            choices = choices_list
+                                      label = paste0(
+                                        varinfo[["name"]][i], " (",
+                                        as.character(varinfo[["domain"]][[i]][1L]),
+                                        ", ", as.character(varinfo[["domain"]][[i]][2L]), ")"
+                                      ),
+                                      choices = choices_list
           )
         }
 
         if (varinfo[["type"]][i] == "categorical") {
           ui_list[[i]] <- numericInput(paste0("pred_var_", varinfo[["name"]][i]),
-            label = paste0(
-              varinfo[["name"]][i], " (",
-              as.character(varinfo[["domain"]][[i]][1L]),
-              " ~ ", as.character(varinfo[["domain"]][[i]][2L]), ")"
-            ),
-            min = varinfo[["domain"]][[i]][1L],
-            max = varinfo[["domain"]][[i]][2L],
-            value = varinfo[["domain"]][[i]][1L]
+                                       label = paste0(
+                                         varinfo[["name"]][i], " (",
+                                         as.character(varinfo[["domain"]][[i]][1L]),
+                                         " ~ ", as.character(varinfo[["domain"]][[i]][2L]), ")"
+                                       ),
+                                       min = varinfo[["domain"]][[i]][1L],
+                                       max = varinfo[["domain"]][[i]][2L],
+                                       value = varinfo[["domain"]][[i]][1L]
           )
         }
 
         if (varinfo[["type"]][i] == "continuous") {
           ui_list[[i]] <- numericInput(paste0("pred_var_", varinfo[["name"]][i]),
-            label = paste0(
-              varinfo[["name"]][i], " (",
-              as.character(varinfo[["domain"]][[i]][1L]),
-              " ~ ", as.character(varinfo[["domain"]][[i]][2L]), ")"
-            ),
-            min = varinfo[["domain"]][[i]][1L],
-            max = varinfo[["domain"]][[i]][2L],
-            value = varinfo[["domain"]][[i]][1L]
+                                       label = paste0(
+                                         varinfo[["name"]][i], " (",
+                                         as.character(varinfo[["domain"]][[i]][1L]),
+                                         " ~ ", as.character(varinfo[["domain"]][[i]][2L]), ")"
+                                       ),
+                                       min = varinfo[["domain"]][[i]][1L],
+                                       max = varinfo[["domain"]][[i]][2L],
+                                       value = varinfo[["domain"]][[i]][1L]
           )
         }
       }
@@ -1503,8 +1516,8 @@ shinyServer(function(input, output, session) {
   output$download_report_basic <- downloadHandler(
     filename = function() {
       paste("hdnom-report-basic",
-        sep = ".",
-        switch(input$format_basic, PDF = "pdf", HTML = "html", Word = "docx")
+            sep = ".",
+            switch(input$format_basic, PDF = "pdf", HTML = "html", Word = "docx")
       )
     },
 
@@ -1515,7 +1528,8 @@ shinyServer(function(input, output, session) {
       file.copy(src, "template-basic.Rmd")
       out <- render(
         "template-basic.Rmd",
-        switch(input$format_basic,
+        switch(
+          input$format_basic,
           PDF = pdf_document(toc = TRUE, number_sections = TRUE, template = NULL),
           HTML = html_document(toc = TRUE, number_sections = TRUE),
           Word = word_document(fig_width = 8, fig_height = 8)
@@ -1528,8 +1542,8 @@ shinyServer(function(input, output, session) {
   output$download_report_external <- downloadHandler(
     filename = function() {
       paste("hdnom-report-external",
-        sep = ".",
-        switch(input$format_external, PDF = "pdf", HTML = "html", Word = "docx")
+            sep = ".",
+            switch(input$format_external, PDF = "pdf", HTML = "html", Word = "docx")
       )
     },
 
@@ -1540,7 +1554,8 @@ shinyServer(function(input, output, session) {
       file.copy(src, "template-external.Rmd")
       out <- render(
         "template-external.Rmd",
-        switch(input$format_external,
+        switch(
+          input$format_external,
           PDF = pdf_document(toc = TRUE, number_sections = TRUE, template = NULL),
           HTML = html_document(toc = TRUE, number_sections = TRUE),
           Word = word_document(fig_width = 8, fig_height = 8)
@@ -1553,8 +1568,8 @@ shinyServer(function(input, output, session) {
   output$download_report_compare <- downloadHandler(
     filename = function() {
       paste("hdnom-report-compare",
-        sep = ".",
-        switch(input$format_compare, PDF = "pdf", HTML = "html", Word = "docx")
+            sep = ".",
+            switch(input$format_compare, PDF = "pdf", HTML = "html", Word = "docx")
       )
     },
 
@@ -1565,7 +1580,8 @@ shinyServer(function(input, output, session) {
       file.copy(src, "template-compare.Rmd")
       out <- render(
         "template-compare.Rmd",
-        switch(input$format_compare,
+        switch(
+          input$format_compare,
           PDF = pdf_document(toc = TRUE, number_sections = TRUE, template = NULL),
           HTML = html_document(toc = TRUE, number_sections = TRUE),
           Word = word_document(fig_width = 8, fig_height = 8)
