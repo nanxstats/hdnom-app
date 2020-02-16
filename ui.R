@@ -6,8 +6,8 @@ shinyUI(
   navbarPage(
     title = "hdnom.io",
     id = "mainnavbar",
-    theme = shinytheme("cosmo"),
-    inverse = TRUE,
+    theme = shinytheme("flatly"),
+    inverse = FALSE,
     windowTitle = "hdnom.io - Nomograms for High-Dimensional Data",
 
     tabPanel(
