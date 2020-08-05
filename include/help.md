@@ -1,5 +1,5 @@
 
-# Getting started with hdnom.io
+# Getting started with the hdnom app
 
 This web application helps you build penalized Cox models for high-dimensional data with survival outcomes. All the 9 types of model included in the _hdnom_ package are supported. It streamlined the process of nomogram building, model validation, calibration, comparison, and reproducible report generation --- all done inside your web browser.
 
