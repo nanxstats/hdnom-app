@@ -2,7 +2,6 @@ library("shiny")
 library("survival")
 library("rmarkdown")
 library("knitr")
-library("DT")
 library("hdnom")
 
 shinyServer(function(input, output, session) {

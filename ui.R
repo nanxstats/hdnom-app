@@ -1,6 +1,7 @@
 library("shiny")
 library("shinythemes")
 library("markdown")
+library("DT")
 
 shinyUI(
   navbarPage(
