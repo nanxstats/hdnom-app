@@ -2,6 +2,7 @@ library("shiny")
 library("survival")
 library("rmarkdown")
 library("knitr")
+library("DT")
 library("hdnom")
 
 shinyServer(function(input, output, session) {
@@ -1245,7 +1246,7 @@ shinyServer(function(input, output, session) {
     cmpCalObj
   })
 
-  output$print_dataset <- renderDataTable({
+  output$print_dataset <- renderDT({
     loadedData <- readData()
     x <- loadedData$"x"
     time <- loadedData$"time"
@@ -1295,7 +1296,7 @@ shinyServer(function(input, output, session) {
     plot(calcedValidate)
   })
 
-  output$summary_validate <- renderDataTable({
+  output$summary_validate <- renderDT({
     calcedValidate <- calcValidate()
     summaryCalcedValidate <- format(summary(calcedValidate), digits = 4L)
     cbind("-" = rownames(summaryCalcedValidate), summaryCalcedValidate)
@@ -1314,7 +1315,7 @@ shinyServer(function(input, output, session) {
     )
   })
 
-  output$summary_calibrate <- renderDataTable({
+  output$summary_calibrate <- renderDT({
     calcedCalibrate <- calcCalibrate()
     summaryCalcedCalibrate <- format(summary(calcedCalibrate), digits = 4L)
     cbind("Group" = rownames(summaryCalcedCalibrate), summaryCalcedCalibrate)
@@ -1342,7 +1343,7 @@ shinyServer(function(input, output, session) {
     plot(calcedExternalValidate)
   })
 
-  output$summary_external_validate <- renderDataTable({
+  output$summary_external_validate <- renderDT({
     calcedExternalValidate <- calcExternalValidate()
     summaryCalcedExternalValidate <- format(summary(calcedExternalValidate), digits = 4L)
     cbind("-" = rownames(summaryCalcedExternalValidate), summaryCalcedExternalValidate)
@@ -1361,7 +1362,7 @@ shinyServer(function(input, output, session) {
     )
   })
 
-  output$summary_external_calibrate <- renderDataTable({
+  output$summary_external_calibrate <- renderDT({
     calcedExternalCalibrate <- calcExternalCalibrate()
     summaryCalcedExternalCalibrate <- format(summary(calcedExternalCalibrate), digits = 4L)
     cbind("Group" = rownames(summaryCalcedExternalCalibrate), summaryCalcedExternalCalibrate)

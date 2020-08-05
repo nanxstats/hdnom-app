@@ -4,11 +4,11 @@ library("markdown")
 
 shinyUI(
   navbarPage(
-    title = "hdnom.io",
+    title = "hdnom app",
     id = "mainnavbar",
     theme = shinytheme("flatly"),
     inverse = FALSE,
-    windowTitle = "hdnom.io - Nomograms for High-Dimensional Data",
+    windowTitle = "hdnom app - Nomograms for High-Dimensional Data",
 
     tabPanel(
       title = "Home",
@@ -18,7 +18,7 @@ shinyUI(
           width = 10, offset = 1,
           div(
             class = "jumbotron",
-            h1("hdnom.io"),
+            h1("hdnom app"),
             h3("Nomograms for high-dimensional data, built with ease."),
             br(),
             actionButton("learnmore", "Learn More", icon("search"), class = "btn-primary btn-lg")
@@ -87,7 +87,7 @@ shinyUI(
             tabsetPanel(
               tabPanel(
                 "Data Table",
-                dataTableOutput("print_dataset")
+                DTOutput("print_dataset")
               ),
               tabPanel("Data Summary", verbatimTextOutput("summary_dataset"))
             )
@@ -337,7 +337,7 @@ shinyUI(
                 tabPanel(
                   "Validation Summary",
                   h3("Time-Dependent AUC Summary at Evaluation Time Points"),
-                  dataTableOutput("summary_validate")
+                  DTOutput("summary_validate")
                 ),
                 tabPanel("Validation Information", verbatimTextOutput("print_validate"))
               )
@@ -408,7 +408,7 @@ shinyUI(
                 tabPanel(
                   "Calibration Summary",
                   h3("Calibration Summary Table"),
-                  dataTableOutput("summary_calibrate")
+                  DTOutput("summary_calibrate")
                 ),
                 tabPanel("Calibration Information", verbatimTextOutput("print_calibrate"))
               )
@@ -507,7 +507,7 @@ shinyUI(
                 tabPanel(
                   "External Validation Summary",
                   h3("Time-Dependent AUC Summary at Evaluation Time Points"),
-                  dataTableOutput("summary_external_validate")
+                  DTOutput("summary_external_validate")
                 ),
                 tabPanel("External Validation Information", verbatimTextOutput("print_external_validate"))
               )
@@ -575,7 +575,7 @@ shinyUI(
                 tabPanel(
                   "External Calibration Summary",
                   h3("External Calibration Summary Table"),
-                  dataTableOutput("summary_external_calibrate")
+                  DTOutput("summary_external_calibrate")
                 ),
                 tabPanel("External Calibration Information", verbatimTextOutput("print_external_calibrate"))
               )
