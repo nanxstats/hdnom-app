@@ -98,7 +98,7 @@ print(calcedCalibrate)
 Kaplan-Meier survival curves and number at risk table for risk groups:
 
 ```{r plot_calibrate_km}
-hdnom.kmplot(calcedCalibrate,
+hdnom::kmplot(calcedCalibrate,
              time.at = seq(input$calibrate_km_from,
                            input$calibrate_km_to,
                            input$calibrate_km_by))
@@ -107,7 +107,7 @@ hdnom.kmplot(calcedCalibrate,
 ## Log-Rank Test for Risk Groups
 
 ```{r print_calibrate_logrank}
-calcedCalibrateLogRank = hdnom.logrank(calcedCalibrate)
+calcedCalibrateLogRank = hdnom::logrank_test(calcedCalibrate)
 print(calcedCalibrateLogRank)
 cat('\n', ' The p-value of log-rank test:\n')
 cat(' ', calcedCalibrateLogRank$pval)
