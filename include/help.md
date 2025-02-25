@@ -3,7 +3,7 @@
 
 This web application helps you build penalized Cox models for high-dimensional data with survival outcomes. All the 9 types of model included in the _hdnom_ package are supported. It streamlined the process of nomogram building, model validation, calibration, comparison, and reproducible report generation --- all done inside your web browser.
 
-Please read the <a href="https://github.com/road2stat/hdnom-doc/blob/master/privacy.md" target="_blank">data privacy policy</a> first before you start using this app.
+Please read the <a href="https://github.com/nanxstats/hdnom-doc/blob/master/privacy.md" target="_blank">data privacy policy</a> first before you start using this app.
 
 The following workflow is recommended:
 
@@ -23,12 +23,12 @@ Notes:
  * To generate the external validation report, please do step 1, 2, 5, and 6;
  * To generate the model comparison report, please do step 1 and 7;
  * To download the R model object, please do step 1 and 2.
- * After downloaded the model object, it might be interesting to try the <a href="https://github.com/road2stat/hdnom-appmaker" target="_blank">hdnom application maker</a> to make your own nomogram-based online prediction app.
+ * After downloaded the model object, it might be interesting to try the <a href="https://github.com/nanxstats/hdnom-appmaker" target="_blank">hdnom application maker</a> to make your own nomogram-based online prediction app.
 
 ### Citation
 
 To cite the _hdnom_ package or the web application in your publications,
-please <a href="https://github.com/road2stat/hdnom-doc/blob/master/citation.md" target="_blank">click here</a> to view the most recent reference to use.
+please <a href="https://github.com/nanxstats/hdnom-doc/blob/master/citation.md" target="_blank">click here</a> to view the most recent reference to use.
 
 ### Feedback
 
@@ -39,5 +39,5 @@ If you have any questions, suggestions, or ideas about the web application, plea
 
 <hr>
 <p class="text">
-© 2015 - 2016 <a href="http://miaozhu.li" target="_blank">Miaozhu Li</a> & <a href="https://nanx.me" target="_blank">Nan Xiao</a> · <a href="https://nanx.me/hdnom/" target="_blank">The hdnom Project</a> · <a href="https://github.com/road2stat/hdnom-doc/blob/master/privacy.md" target="_blank">Data Privacy Policy</a>
+© 2015 - 2016 <a href="http://miaozhu.li" target="_blank">Miaozhu Li</a> & <a href="https://nanx.me" target="_blank">Nan Xiao</a> · <a href="https://nanx.me/hdnom/" target="_blank">The hdnom Project</a> · <a href="https://github.com/nanxstats/hdnom-doc/blob/master/privacy.md" target="_blank">Data Privacy Policy</a>
 </p>
